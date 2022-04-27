@@ -5,8 +5,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da09b65b-8f76-4234-9f33-f45143c165f0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/close.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/close.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Architecture_Cross_Bar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Architecture_Horseshoe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Architecture_Water_on_Modern.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Architecture_White_Light.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Sport_Jump.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Sport_Next_Hold.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Sport_Race_End.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Sport_Sky_Cross.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/Sport_Tricks_in_the_air.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Ellie Rose/sport_water_tunnel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/EllieRoseWilkens.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Architecture_Corner_Room.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Architecture_Dome.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Architecture_On_a_hill.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Architecure_Contrast.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Travel _Adventure_Door.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Travel_Bike_and_Stair.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Travel_OpenMountain.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Travel_SunsetonCanals.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Marcel/Travel_Tower.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/MarcelNikolic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Animals_Rainbow.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Animals_Wild_Horses_in_the_mountains.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Event_BenevidesWedding.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Event_PintoWedding.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Event_SeasideWedding.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Portrait_Background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Portrait_Nora.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Portrait_Wednesday.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Travel_HillsideColor.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Mimi/Travel_Lonesome.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/MimiKeel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Portrait_AfternoonBreak.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Portrait_Alexandra.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Portrait_Shaw.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Portrait_Sunkissed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Travel_Boat_Wanderer.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Travel_Bridge_into_Forest.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Travel_On_the_Road.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Travel_Outdoor_Baths.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Travel_Road_into_Hill.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Nabeel/Travel_Rock_Mountains.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/NabeelBradford.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Animals_Majesty.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Animals_Puppiness.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Event_Emcee.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Event_KeyboardCheck.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Event_ProductPitch.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Event_VentureConference.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Fashion_Melody_Red_on_Stripes.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Fashion_Wings.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Sport_2000_with_8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Rhode/Sport_Butterfly.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/RhodeDubois.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Art_Mine.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Art_Purple_light.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Art_Triangle_Man.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Art_Wooden_Horse_Sculpture.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Event_18thAnniversary.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Event_Sparklers.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Event_WeddingGazebo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Fashion_Pattern_on_Pattern.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Fashion_Urban_Jungle.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/Tracy/Fashion_Yellow_Beach.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/TracyGalindo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/photographers/account.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photographer.html" beforeDir="false" afterPath="$PROJECT_DIR$/photographer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/factories/photographer.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/factories/photographer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/pages/photographer.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pages/photographer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +106,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -46,7 +120,7 @@
       <updated>1650836300189</updated>
       <workItem from="1650836305173" duration="2588000" />
       <workItem from="1650871887092" duration="5000" />
-      <workItem from="1650989689707" duration="1644000" />
+      <workItem from="1650989689707" duration="5025000" />
     </task>
     <servers />
   </component>

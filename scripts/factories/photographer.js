@@ -1,9 +1,9 @@
-function photographerFactory(data) {
+const photographerFactory = data => {
     const { name, portrait } = data;
 
     const picture = `assets/photographersID/${portrait}`;
 
-    function getUserCardDOM() {
+    const getUserCardDOM = () => {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
@@ -14,4 +14,20 @@ function photographerFactory(data) {
         return (article);
     }
     return { name, picture, getUserCardDOM }
+}
+
+const mediasFactory = (data) => {
+    const { date, id, image, likes, photographerId,  price, title } = data
+
+    const picture = `assets/photographersMedias/${photographerId}/${image}`;
+
+    const getMediaCardDOM = () => {
+        const div = document.createElement("div");
+          const img = document.createElement("img");
+
+          img.src = picture
+          div.append(img)
+        return (div);
+    }
+    return { date, id, image, likes, photographerId,  price, title, getMediaCardDOM } 
 }

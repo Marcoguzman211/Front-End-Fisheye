@@ -1,19 +1,43 @@
 const photographerFactory = data => {
-    const { name, portrait } = data;
-
-    const picture = `assets/photographersID/${portrait}`;
-
-    const getUserCardDOM = () => {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
+    const { name, id, portrait, city, country, tagline, price } = data; 
+      const picture = `assets/photographersID/${portrait}`; // Get .jpg 
+    
+      function getUserCardDOM() { // Build DOM 
+        const article = document.createElement('article');
+        const a = document.createElement('a');
+        a.setAttribute('href', `./photographer.html?id=${id}`);
+        article.setAttribute('id', id);
+        const img = document.createElement('img');
+        img.setAttribute('src', picture);
+        img.setAttribute('alt', `${name} photographer portrait`);
+        const h2 = document.createElement('h2');
         h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
+        const h4 = document.createElement('h4');
+        h4.textContent = `${city}, ${country}`;
+        const h5 = document.createElement('h5');
+        h5.textContent = tagline;
+        const h6 = document.createElement('h6');
+        h6.textContent = `${price}€/jour`;
+    
+        article.appendChild(a);
+        a.appendChild(img);
+        a.appendChild(h2);
+        a.appendChild(h4);
+        a.appendChild(h5);
+        a.appendChild(h6);
+    
         return (article);
-    }
-    return { name, picture, getUserCardDOM }
+      }
+      return { // an object keys/values
+        name,
+        id,
+        portrait,
+        city,
+        country,
+        tagline,
+        price,
+        getUserCardDOM,
+      };
 }
 
 const mediasFactory = (data) => {

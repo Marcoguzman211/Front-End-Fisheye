@@ -9,7 +9,7 @@ const getPhotographersData = async () => {
 
 const displayData = (data) => {
     const searchParams = new URLSearchParams(window.location.search); // Empty URLSearchParams object pour cibler l'url
-    const container = document.querySelector(".container");
+    const mediaCardsContainer = document.querySelector(".photographers-media-cards");
       const photographerId = searchParams.get("id"); // Récupération de l'id dans l'URL
       const photographerToDisplay = data.photographers.find( // = infos à propos du photographe séléctionné dans index.html
         (element) => element.id == photographerId
@@ -25,7 +25,7 @@ const displayData = (data) => {
       mediasToDisplay.forEach(media => {
           const mediaModel = mediasFactory(media)
           const mediaCardDOM = mediaModel.getMediaCardDOM();
-          container.appendChild(mediaCardDOM)
+          mediaCardsContainer.appendChild(mediaCardDOM)
       })
 }
 

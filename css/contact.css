@@ -1,0 +1,88 @@
+/* Contact form modal */
+
+.modal {
+    position: fixed;
+    top: 50%; /* centered */
+    left: 50%; /* centered */
+    transform: translate(-50%, -50%); /* centered */
+    height: 90vh; 
+    max-height: 900px; 
+    width: 599px;
+    display: flex;
+    border-radius: 5px;
+    background-color: #DB8876;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 35px 25px 35px;
+    margin: 0 auto;
+}
+
+.modal header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 0;
+}
+
+.contact_header_top {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__close {
+    cursor: pointer; 
+    background-color: transparent;
+    border: none;
+    border: 2px solid green;
+}
+
+.modal header div h2 {
+    font-size: 54px;
+}
+
+.modal header h2 {
+    justify-content: flex-end;
+    margin: 0;    
+    text-align: left;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form fieldset {
+    border: transparent;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 10px;
+    margin-left: -11px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+
+form textarea {
+    width: 100%; 
+    height: 15vh;
+    max-height: 170px;
+}

@@ -9,6 +9,14 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -18,25 +26,64 @@
       </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <!-- <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
-      </div>
-      <div class="container"></div>
+      </div> -->
+      <section
+        class="photograph-header"
+        role="region"
+        aria-label="Profil photographe"
+      ></section>
+      <!-- SECTION Photographer medias-->
+      <section
+        class="photographers-media-cards"
+        role="region"
+        aria-label="photographer medias catalog"
+      ></section>
     </main>
-    <div id="contact_modal">
+    <!--Contact form modal-->
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-hidden="true"
+      aria-modal="true"
+      aria-describedby="contact modal"
+    >
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
+          <div class="contact_header_top">
+            <h2>Contactez-moi</h2>
+            <button class="modal__close">
+              <img
+                src="assets/icons/close.svg"
+                onclick="closeModal()"
+                alt="close button"
+              />
+            </button>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <h2 id="photographerNameContact"></h2>
+        </header>
+        <form
+          method="post"
+          action=""
+          role="form"
+          aria-label="photographer contact form"
+        >
+          <fieldset role="group">
+            <label tabindex="0" for="firstname">Prénom</label>
+            <input tabindex="0" type="text" name="firstname" id="firstname" />
+            <label tabindex="0" for="lastname">Nom</label>
+            <input tabindex="0" type="text" name="lastname" id="lastname" />
+            <label tabindex="0" for="email">Email</label>
+            <input tabindex="0" type="email" name="email" id="email" />
+            <label tabindex="0" for="message">Votre message</label>
+            <textarea tabindex="0" id="message"></textarea>
+          </fieldset>
+          <button tabindex="0" type="submit" class="contact-button">
+            Envoyer
+          </button>
         </form>
       </div>
     </div>

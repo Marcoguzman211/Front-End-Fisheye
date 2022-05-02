@@ -74,3 +74,61 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+/* Gallery */
+.photographers-media-cards { 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    margin-top: 50px;
+}
+
+.card {
+    width: 350px;
+}
+
+.photographers-media-cards figure img {
+   height: 300px;
+   width: 350px;
+   object-fit: cover;
+   cursor: pointer;
+}
+
+.photographers-media-cards figure div {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photographers-media-cards figure div h2 {
+    width: 80%; 
+    margin: 0; 
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.photographers-media-cards figure div div {
+    display: flex;
+    width: 25%; 
+}
+
+.photographers-media-cards figure div div h2 {
+    width: 10%;
+    margin: 0; 
+}
+
+.heart {
+    width: 10%; 
+    color: #901C1C;
+    cursor: pointer;
+}
+
+
+.video {
+    width: 350px;
+    height: 300px;
+    cursor: pointer;
+    /* object-fit: cover; */
+}

@@ -10,18 +10,19 @@ const getPhotographersData = async () => {
 const displayData = (data) => {
     const searchParams = new URLSearchParams(window.location.search); // Empty URLSearchParams object pour cibler l'url
     const mediaCardsContainer = document.querySelector(".photographers-media-cards");
+    const photographHeader = document.querySelector(".photograph-header")
       const photographerId = searchParams.get("id"); // Récupération de l'id dans l'URL
       const photographerToDisplay = data.photographers.find( // = infos à propos du photographe séléctionné dans index.html
         (element) => element.id == photographerId
       );
+      console.log(photographerToDisplay)
+      document.title = `Fisheye | ${photographerToDisplay.name}`
+      photographHeader.append(getHeaderCardDOM(photographerToDisplay))
+
       const mediasToDisplay = data.media.filter(
         // Les objects média qui contiennent l'id du photographe
         (element) => element.photographerId == photographerId
       );
-
-      console.log(mediasToDisplay);
-      console.log(photographerToDisplay);
-
       mediasToDisplay.forEach(media => {
           const mediaModel = mediasFactory(media)
           const mediaCardDOM = mediaModel.getMediaCardDOM();

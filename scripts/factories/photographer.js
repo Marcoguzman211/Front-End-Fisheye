@@ -111,7 +111,7 @@ const createVideoDOM = (data) => {
     const { video, likes, photographerId, title } = data
     const figure = document.createElement("figure")
     figure.classList.add("card")
-    const content = `<video class="video" src="./assets/photographersMedias/${photographerId}/${video}" alt="${title}" controls></video>
+    const content = `<video class="video" src="./assets/photographersMedias/${photographerId}/${video}" alt="${title}"></video>
     <div>
         <h2 tabindex="5">${title}</h2>
         <div>

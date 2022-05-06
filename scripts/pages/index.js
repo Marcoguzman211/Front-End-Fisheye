@@ -14,11 +14,6 @@
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
-
-            /* //Événement click pour envoyer vers photographer.html
-            userCardDOM.addEventListener('click', () => {
-                window.location.href = `photographer.html?id=${photographer.id}`;
-            }); */
         });
     };
 

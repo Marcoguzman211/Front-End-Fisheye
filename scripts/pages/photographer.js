@@ -36,7 +36,10 @@ const displayData = (data) => {
       });
       displayPrice(photographerToDisplay.price)
       displayTotalLikes()
+      mediasDOM(mediasToDisplay);
 }
+
+
  // FOOTER
  const displayPrice = (price) => {
   const divPrice = document.createElement('div');
@@ -68,104 +71,108 @@ const displayData = (data) => {
   // Récupère les datas des photographes
   const data = await getPhotographersData();
   displayData(data);
-  const mediasDOM = () => {
-    const mediasCardsFigure = document.querySelectorAll('.photographers-media-cards > figure');
-    for (const [index, figure] of mediasCardsFigure.entries()) { // [index(key), figure(value)]
-      // LIKES 
-      // Add or substract like to figure and total
-      const addLike = () => {
-        figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) + 1;
-        mediasLikesTotal++;
-        removeTotalLikes();
-        updateTotalLikes();
+}
+
+init();
+
+const mediasDOM = (mediasToDisplay) => {
+  const mediasCardsFigure = document.querySelectorAll('.photographers-media-cards > figure');
+  for (const [index, figure] of mediasCardsFigure.entries()) { // [index(key), figure(value)]
+    // LIKES 
+    // Add or substract like to figure and total
+    const addLike = () => {
+      figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) + 1;
+      mediasLikesTotal++;
+      removeTotalLikes();
+      updateTotalLikes();
+    }
+    const substractLike = () => {
+      figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) - 1;
+      mediasLikesTotal--;
+      removeTotalLikes();
+      updateTotalLikes();
+    }
+    // LIKES 
+    // Event: click 
+    figure.querySelector('.heart').addEventListener('click', () => {
+      figure.classList.toggle('is_liked'); 
+      if (figure.classList.contains('is_liked')) {
+        addLike();
+      } else {
+        substractLike(); 
       }
-      const substractLike = () => {
-        figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) - 1;
-        mediasLikesTotal--;
-        removeTotalLikes();
-        updateTotalLikes();
-      }
-      // LIKES 
-      // Event: click 
-      figure.querySelector('.heart').addEventListener('click', () => {
+    });
+     // LIKES 
+     // Event: keyup 
+     figure.querySelector('.heart').addEventListener('keyup', (event) => {
+       event.preventDefault(); 
+       event.stopPropagation();
+       if (event.code === 'Enter') {
         figure.classList.toggle('is_liked'); 
-        if (figure.classList.contains('is_liked')) {
-          addLike();
-        } else {
-          substractLike(); 
-        }
-      });
-       // LIKES 
-       // Event: keyup 
-       figure.querySelector('.heart').addEventListener('keyup', (event) => {
-         event.preventDefault(); 
-         event.stopPropagation();
-         if (event.code === 'Enter') {
-          figure.classList.toggle('is_liked'); 
-            if (figure.classList.contains('is_liked')) {
-              addLike();
-            } else {
-              substractLike(); 
-            } 
-         }
-      });
-      // LIGHTBOX
-      // Get image or video media (used for click and keyboard)
-      const sourceMediaClicked = figure.firstChild.src;
-      const titleMediaClicked = figure.getElementsByTagName('h2')[0].textContent;
-      const lightboxContainer = document.querySelector(
-        '.lightbox__container',
-      );
-      const title = document.createElement('h2');
-      // Add informations
-      const mediaImageVideoInformations = () => {
-        title.textContent = titleMediaClicked;
-        title.setAttribute('tabindex', '1')
-        title.setAttribute('role', 'Text') 
-        title.setAttribute('aria-hidden', 'false') 
-        title.setAttribute('aria-label', `${titleMediaClicked}`)  
-        title.classList.add("lightbox-title")
-        currentLightboxIndex = index;
-        lightboxContainer.appendChild(title);
+          if (figure.classList.contains('is_liked')) {
+            addLike();
+          } else {
+            substractLike(); 
+          } 
+       }
+    });
+    // LIGHTBOX
+    // Get image or video media (used for click and keyboard)
+    const sourceMediaClicked = figure.firstChild.src;
+    const titleMediaClicked = figure.getElementsByTagName('h2')[0].textContent;
+    const lightboxContainer = document.querySelector(
+      '.lightbox__container',
+    );
+    const title = document.createElement('h2');
+    // Add informations
+    const mediaImageVideoInformations = () => {
+      title.textContent = titleMediaClicked;
+      title.setAttribute('tabindex', '1')
+      title.setAttribute('role', 'Text') 
+      title.setAttribute('aria-hidden', 'false') 
+      title.setAttribute('aria-label', `${titleMediaClicked}`)  
+      title.classList.add("lightbox-title")
+      currentLightboxIndex = index;
+      lightboxContainer.appendChild(title);
+    }
+    // Get image or video and display
+    const mediaGetImage = () => {
+      const img = document.createElement('img');
+      img.src = sourceMediaClicked;
+      lightboxContainer.appendChild(img);
+      mediaImageVideoInformations(); 
+      displayLightbox(); // lightbox.js
+    }
+    const mediaGetVideo = () => {
+      const video = document.createElement('video');
+      video.src = sourceMediaClicked;
+      video.controls = true;
+      lightboxContainer.append(video);
+      mediaImageVideoInformations();
+      displayLightbox(); //lightbox.js
+    }
+    // Open on click
+    figure.firstChild.addEventListener('click', () => {
+      if (sourceMediaClicked.match(imgRegex)) { 
+        mediaGetImage(); 
+      } else if (sourceMediaClicked.match(videoRegex)) { 
+        mediaGetVideo(); 
       }
-      // Get image or video and display
-      const mediaGetImage = () => {
-        const img = document.createElement('img');
-        img.src = sourceMediaClicked;
-        lightboxContainer.appendChild(img);
-        mediaImageVideoInformations(); 
-        displayLightbox(); // lightbox.js
-      }
-      const mediaGetVideo = () => {
-        const video = document.createElement('video');
-        video.src = sourceMediaClicked;
-        video.controls = true;
-        lightboxContainer.append(video);
-        mediaImageVideoInformations();
-        displayLightbox(); //lightbox.js
-      }
-      // Open on click
-      figure.firstChild.addEventListener('click', () => {
+    });
+    // Open on keyup
+    figure.addEventListener('keyup', (event) => {
+      event.preventDefault();
+      if (event.code === 'Enter') {
         if (sourceMediaClicked.match(imgRegex)) { 
           mediaGetImage(); 
         } else if (sourceMediaClicked.match(videoRegex)) { 
           mediaGetVideo(); 
-        }
-      });
-      // Open on keyup
-      figure.addEventListener('keyup', (event) => {
-        event.preventDefault();
-        if (event.code === 'Enter') {
-          if (sourceMediaClicked.match(imgRegex)) { 
-            mediaGetImage(); 
-          } else if (sourceMediaClicked.match(videoRegex)) { 
-            mediaGetVideo(); 
-          } 
-        }
-      }); 
-    } 
-  }
-  mediasDOM();
-}
+        } 
+      }
+    });
 
-init();
+  }  
+
+  document.querySelector('.lightbox__prev').addEventListener('click', previousLightbox)
+  
+}

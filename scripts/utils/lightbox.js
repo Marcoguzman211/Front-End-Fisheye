@@ -25,29 +25,38 @@ const previousLightbox = () => {
 
   lightboxContainer.innerHTML = ""
   if (previousMedia.firstChild.src.match(imgRegex)) { 
-      const img = document.createElement('img');
-    img.src = previousMedia.firstChild.src;
-    lightboxContainer.appendChild(img);
-    const title = document.createElement('h2');
-      title.textContent = previousMedia.querySelector('h2').textContent;
-      title.setAttribute('tabindex', '1')
-      title.setAttribute('role', 'Text') 
-      title.setAttribute('aria-hidden', 'false') 
-      title.setAttribute('aria-label', `${previousMedia.querySelector('h2').textContent}`)  
-      title.classList.add("lightbox-title")
-      lightboxContainer.appendChild(title);
+    mediaGetImage(previousMedia.firstChild.src, lightboxContainer, previousMedia.querySelector('h2').textContent)
   } else if (previousMedia.firstChild.src.match(videoRegex)) { 
-    const video = document.createElement('video');
-    video.src = previousMedia.firstChild.src;
-    video.controls = true;
-    lightboxContainer.append(video);
-    const title = document.createElement('h2');
-      title.textContent = previousMedia.querySelector('h2').textContent;
-      title.setAttribute('tabindex', '1')
-      title.setAttribute('role', 'Text') 
-      title.setAttribute('aria-hidden', 'false') 
-      title.setAttribute('aria-label', `${previousMedia.querySelector('h2').textContent}`)  
-      title.classList.add("lightbox-title")
-      lightboxContainer.appendChild(title);
+    mediaGetVideo(previousMedia.firstChild.src, lightboxContainer, previousMedia.querySelector('h2').textContent)
   } 
 }
+
+
+    // Get image or video and display
+    const mediaGetImage = (source, container, titre) => {
+      const title = document.createElement('h2');
+      const img = document.createElement('img');
+      img.src = source;
+      container.appendChild(img);
+      title.textContent = titre;
+      title.setAttribute('tabindex', '1')
+      title.setAttribute('role', 'Text') 
+      title.setAttribute('aria-hidden', 'false') 
+      title.setAttribute('aria-label', `${titre}`)  
+      title.classList.add("lightbox-title")
+      container.appendChild(title);
+    }
+    const mediaGetVideo = (source, container, titre) => {
+      const title = document.createElement('h2');
+      const video = document.createElement('video');
+      video.src = source;
+      video.controls = true;
+      container.append(video);
+      title.textContent = titre;
+      title.setAttribute('tabindex', '1')
+      title.setAttribute('role', 'Text') 
+      title.setAttribute('aria-hidden', 'false') 
+      title.setAttribute('aria-label', `${titre}`)  
+      title.classList.add("lightbox-title")
+      container.appendChild(title);
+    }

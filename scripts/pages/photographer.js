@@ -123,40 +123,15 @@ const mediasDOM = (mediasToDisplay) => {
     const lightboxContainer = document.querySelector(
       '.lightbox__container',
     );
-    const title = document.createElement('h2');
     // Add informations
-    const mediaImageVideoInformations = () => {
-      title.textContent = titleMediaClicked;
-      title.setAttribute('tabindex', '1')
-      title.setAttribute('role', 'Text') 
-      title.setAttribute('aria-hidden', 'false') 
-      title.setAttribute('aria-label', `${titleMediaClicked}`)  
-      title.classList.add("lightbox-title")
-      currentLightboxIndex = index;
-      lightboxContainer.appendChild(title);
-    }
-    // Get image or video and display
-    const mediaGetImage = () => {
-      const img = document.createElement('img');
-      img.src = sourceMediaClicked;
-      lightboxContainer.appendChild(img);
-      mediaImageVideoInformations(); 
-      displayLightbox(); // lightbox.js
-    }
-    const mediaGetVideo = () => {
-      const video = document.createElement('video');
-      video.src = sourceMediaClicked;
-      video.controls = true;
-      lightboxContainer.append(video);
-      mediaImageVideoInformations();
-      displayLightbox(); //lightbox.js
-    }
     // Open on click
     figure.firstChild.addEventListener('click', () => {
       if (sourceMediaClicked.match(imgRegex)) { 
-        mediaGetImage(); 
+        mediaGetImage(sourceMediaClicked, lightboxContainer, titleMediaClicked); 
+        displayLightbox();
       } else if (sourceMediaClicked.match(videoRegex)) { 
-        mediaGetVideo(); 
+        mediaGetVideo(sourceMediaClicked, lightboxContainer, titleMediaClicked); 
+        displayLightbox();
       }
     });
     // Open on keyup
@@ -164,9 +139,11 @@ const mediasDOM = (mediasToDisplay) => {
       event.preventDefault();
       if (event.code === 'Enter') {
         if (sourceMediaClicked.match(imgRegex)) { 
-          mediaGetImage(); 
+          mediaGetImage(sourceMediaClicked, lightboxContainer, titleMediaClicked);
+          displayLightbox(); 
         } else if (sourceMediaClicked.match(videoRegex)) { 
-          mediaGetVideo(); 
+          mediaGetVideo(sourceMediaClicked, lightboxContainer, titleMediaClicked); 
+          displayLightbox();
         } 
       }
     });

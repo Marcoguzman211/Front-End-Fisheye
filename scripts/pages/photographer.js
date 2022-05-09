@@ -151,5 +151,6 @@ const mediasDOM = (mediasToDisplay) => {
   }  
 
   document.querySelector('.lightbox__prev').addEventListener('click', previousLightbox)
+  document.querySelector('.lightbox__next').addEventListener('click', nextLightbox)
   
 }

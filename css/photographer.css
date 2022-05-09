@@ -185,3 +185,35 @@ form input {
     cursor: pointer;
     /* object-fit: cover; */
 }
+
+/* Likes price footer */
+
+.footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 5%;
+    background-color: #DB8876;
+    width: 450px;
+    height: 40px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: 700;
+    z-index: 9;
+}
+
+.footer .total_likes {
+    display: flex;
+    align-items: center;
+}
+
+.footer .total_likes h3 {
+    margin-right: 10px;
+}
+
+.footer .price {
+    margin-right: 10px;
+}

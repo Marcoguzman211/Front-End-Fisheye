@@ -17,10 +17,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="css/lightbox.css" />
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <a href="index.html">
         <img id="logo-site" src="assets/images/logo.png" class="logo" />
       </a>
@@ -42,6 +43,41 @@
         role="region"
         aria-label="photographer medias catalog"
       ></section>
+      <!--Lightbox modal-->
+      <div id="lightbox" role="dialog" aria-label="Image closeup view">
+        <button
+          role="link"
+          aria-label="Next image"
+          class="lightbox-button lightbox__next"
+        >
+          Suivant
+        </button>
+        <button
+          role="link"
+          aria-label="Previous image"
+          class="lightbox-button lightbox__prev"
+        >
+          Précédent
+        </button>
+        <button
+          role="button"
+          aria-label="Close dialog"
+          class="lightbox-button lightbox__close"
+          onclick="closeLightbox()"
+        >
+          Fermer
+        </button>
+        <div class="lightbox__container">
+          <div class="lightbox-media-title"></div>
+        </div>
+      </div>
+      <!--Photographer likes & price-->
+      <footer
+        tabindex="4"
+        class="footer"
+        role="Content information"
+        aria-label="total likes and price"
+      ></footer>
     </main>
     <!--Contact form modal-->
     <div
@@ -90,5 +126,6 @@
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/lightbox.js" defer></script>
   </body>
 </html>

@@ -1,4 +1,11 @@
 //Mettre le code JavaScript lié à la page photographer.html
+const imgRegex = /^.*\.(jpg)$/;
+const videoRegex = /^.*\.(mp4)$/;
+const footer = document.querySelector('.footer');
+let currentLightboxIndex = 0;
+let mediasLikesTotal = 0;
+
+
 const getPhotographersData = async () => {
   return fetch("./data/photographers.json") // Get .json
     .then((response) => response.json()) // Make JS object
@@ -15,25 +22,150 @@ const displayData = (data) => {
       const photographerToDisplay = data.photographers.find( // = infos à propos du photographe séléctionné dans index.html
         (element) => element.id == photographerId
       );
-      console.log(photographerToDisplay)
       document.title = `Fisheye | ${photographerToDisplay.name}`
       photographHeader.append(getHeaderCardDOM(photographerToDisplay))
-
       const mediasToDisplay = data.media.filter(
         // Les objects média qui contiennent l'id du photographe
         (element) => element.photographerId == photographerId
       );
       mediasToDisplay.forEach(media => {
-          const mediaModel = mediasFactory(media)
-          const mediaCardDOM = mediaModel.getMediaCardDOM();
-          mediaCardsContainer.appendChild(mediaCardDOM)
-      })
+        const mediaModel = mediasFactory(media)
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaCardsContainer.appendChild(mediaCardDOM)
+        mediasLikesTotal += media.likes   //Ajoute les likes de chaque media au nombre total
+      });
+      displayPrice(photographerToDisplay.price)
+      displayTotalLikes()
 }
+ // FOOTER
+ const displayPrice = (price) => {
+  const divPrice = document.createElement('div');
+  divPrice.classList.add('price');
+  const priceCardDOM = `<h2 tabindex="4">${price}€ / jour</h2>`;
+  divPrice.innerHTML = priceCardDOM;
+  footer.append(divPrice);
+};
+
+ // Display total likes
+ const displayTotalLikes = () => {
+  const divLikes = document.createElement('div');
+  divLikes.classList.add('total_likes');
+  const mediasLikesTotalCardDOM = `<h2 tabindex="4" id="likes">${mediasLikesTotal}</h2>
+                                    <div class="heart filter_icons"><i class="fa fa-heart fa-lg" title="heart icon"></i></div>`;
+  divLikes.innerHTML = mediasLikesTotalCardDOM;
+  footer.prepend(divLikes);
+  };
+
+  // Update total likes
+  const removeTotalLikes = () => {
+    document.getElementById('likes').textContent = '';
+  };
+  const updateTotalLikes = () => {
+    document.getElementById('likes').textContent = mediasLikesTotal;
+  };
 
  const init = async () => {
   // Récupère les datas des photographes
   const data = await getPhotographersData();
   displayData(data);
+  const mediasDOM = () => {
+    const mediasCardsFigure = document.querySelectorAll('.photographers-media-cards > figure');
+    for (const [index, figure] of mediasCardsFigure.entries()) { // [index(key), figure(value)]
+      // LIKES 
+      // Add or substract like to figure and total
+      const addLike = () => {
+        figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) + 1;
+        mediasLikesTotal++;
+        removeTotalLikes();
+        updateTotalLikes();
+      }
+      const substractLike = () => {
+        figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) - 1;
+        mediasLikesTotal--;
+        removeTotalLikes();
+        updateTotalLikes();
+      }
+      // LIKES 
+      // Event: click 
+      figure.querySelector('.heart').addEventListener('click', () => {
+        figure.classList.toggle('is_liked'); 
+        if (figure.classList.contains('is_liked')) {
+          addLike();
+        } else {
+          substractLike(); 
+        }
+      });
+       // LIKES 
+       // Event: keyup 
+       figure.querySelector('.heart').addEventListener('keyup', (event) => {
+         event.preventDefault(); 
+         event.stopPropagation();
+         if (event.code === 'Enter') {
+          figure.classList.toggle('is_liked'); 
+            if (figure.classList.contains('is_liked')) {
+              addLike();
+            } else {
+              substractLike(); 
+            } 
+         }
+      });
+      // LIGHTBOX
+      // Get image or video media (used for click and keyboard)
+      const sourceMediaClicked = figure.firstChild.src;
+      const titleMediaClicked = figure.getElementsByTagName('h2')[0].textContent;
+      const lightboxContainer = document.querySelector(
+        '.lightbox__container',
+      );
+      const title = document.createElement('h2');
+      // Add informations
+      const mediaImageVideoInformations = () => {
+        title.textContent = titleMediaClicked;
+        title.setAttribute('tabindex', '1')
+        title.setAttribute('role', 'Text') 
+        title.setAttribute('aria-hidden', 'false') 
+        title.setAttribute('aria-label', `${titleMediaClicked}`)  
+        title.classList.add("lightbox-title")
+        currentLightboxIndex = index;
+        lightboxContainer.appendChild(title);
+      }
+      // Get image or video and display
+      const mediaGetImage = () => {
+        const img = document.createElement('img');
+        img.src = sourceMediaClicked;
+        lightboxContainer.appendChild(img);
+        mediaImageVideoInformations(); 
+        displayLightbox(); // lightbox.js
+      }
+      const mediaGetVideo = () => {
+        const video = document.createElement('video');
+        video.src = sourceMediaClicked;
+        video.controls = true;
+        lightboxContainer.append(video);
+        mediaImageVideoInformations();
+        displayLightbox(); //lightbox.js
+      }
+      // Open on click
+      figure.firstChild.addEventListener('click', () => {
+        if (sourceMediaClicked.match(imgRegex)) { 
+          mediaGetImage(); 
+        } else if (sourceMediaClicked.match(videoRegex)) { 
+          mediaGetVideo(); 
+        }
+      });
+      // Open on keyup
+      figure.addEventListener('keyup', (event) => {
+        event.preventDefault();
+        if (event.code === 'Enter') {
+          if (sourceMediaClicked.match(imgRegex)) { 
+            mediaGetImage(); 
+          } else if (sourceMediaClicked.match(videoRegex)) { 
+            mediaGetVideo(); 
+          } 
+        }
+      }); 
+    } 
+  }
+  mediasDOM();
 }
 
 init();

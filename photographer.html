@@ -43,34 +43,6 @@
         role="region"
         aria-label="photographer medias catalog"
       ></section>
-      <!--Lightbox modal-->
-      <div id="lightbox" role="dialog" aria-label="Image closeup view">
-        <button
-          role="link"
-          aria-label="Next image"
-          class="lightbox-button lightbox__next"
-        >
-          Suivant
-        </button>
-        <button
-          role="link"
-          aria-label="Previous image"
-          class="lightbox-button lightbox__prev"
-        >
-          Précédent
-        </button>
-        <button
-          role="button"
-          aria-label="Close dialog"
-          class="lightbox-button lightbox__close"
-          onclick="closeLightbox()"
-        >
-          Fermer
-        </button>
-        <div class="lightbox__container">
-          <div class="lightbox-media-title"></div>
-        </div>
-      </div>
       <!--Photographer likes & price-->
       <footer
         tabindex="4"
@@ -79,6 +51,34 @@
         aria-label="total likes and price"
       ></footer>
     </main>
+    <!--Lightbox modal-->
+    <div id="lightbox" role="dialog" aria-label="Image closeup view">
+      <button
+        role="link"
+        aria-label="Next image"
+        class="lightbox-button lightbox__next"
+      >
+        Suivant
+      </button>
+      <button
+        role="link"
+        aria-label="Previous image"
+        class="lightbox-button lightbox__prev"
+      >
+        Précédent
+      </button>
+      <button
+        role="button"
+        aria-label="Close dialog"
+        class="lightbox-button lightbox__close"
+        onclick="closeLightbox()"
+      >
+        Fermer
+      </button>
+      <div class="lightbox__container">
+        <div class="lightbox-media-title"></div>
+      </div>
+    </div>
     <!--Contact form modal-->
     <div
       id="contact_modal"

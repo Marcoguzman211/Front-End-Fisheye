@@ -37,6 +37,31 @@ const displayData = (data) => {
       displayPrice(photographerToDisplay.price)
       displayTotalLikes()
       mediasDOM(mediasToDisplay);
+
+      document.querySelector(".photograph-header").addEventListener("click", async () => {
+        document.querySelector('.photographers-media-cards').innerHTML = ""
+        document.querySelector('.photograph-header').innerHTML = ""
+        document.querySelector("footer").innerHTML = ""
+        mediasLikesTotal = 0
+        const data = await getPhotographersData();
+        data.media.sort((a, b) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        });
+      
+        sortedData = {
+          media: data.media,
+          photographers: data.photographers
+        }
+        
+        console.log(sortedData)
+        displayData(sortedData)
+      })
 }
 
 
@@ -120,9 +145,7 @@ const mediasDOM = (mediasToDisplay) => {
     // Get image or video media (used for click and keyboard)
     const sourceMediaClicked = figure.firstChild.src;
     const titleMediaClicked = figure.getElementsByTagName('h2')[0].textContent;
-    const lightboxContainer = document.querySelector(
-      '.lightbox__container',
-    );
+    const lightboxContainer = document.querySelector('.lightbox__container');
     // Add informations
     // Open on click
     figure.firstChild.addEventListener('click', () => {
@@ -152,5 +175,39 @@ const mediasDOM = (mediasToDisplay) => {
 
   document.querySelector('.lightbox__prev').addEventListener('click', previousLightbox)
   document.querySelector('.lightbox__next').addEventListener('click', nextLightbox)
-  
+
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'ArrowLeft') {
+      previousLightbox()
+    } else if (e.code === 'ArrowRight') {
+      nextLightbox()
+    } else if (e.code == "Escape") {
+      closeLightbox()
+    }
+  })
 }
+
+/* document.querySelector(".photograph-header").addEventListener("click", async () => {
+  document.querySelector('.photographers-media-cards').innerHTML = ""
+  document.querySelector('.photograph-header').innerHTML = ""
+  document.querySelector("footer").innerHTML = ""
+  mediasLikesTotal = 0
+  const data = await getPhotographersData();
+  data.media.sort((a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  });
+
+  sortedData = {
+    media: data.media,
+    photographers: data.photographers
+  }
+  
+  console.log(sortedData)
+  displayData(sortedData)
+}) */

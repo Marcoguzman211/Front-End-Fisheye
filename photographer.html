@@ -18,6 +18,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/lightbox.css" />
+    <link rel="stylesheet" href="css/dropdown.css" />
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -37,6 +38,54 @@
         role="region"
         aria-label="Profil photographe"
       ></section>
+      <!-- Dropdown menu -->
+      <label
+        tabindex="4"
+        id="trier-par"
+        for=""
+        selection
+        aria-label="Sort by menu"
+        >Trier par
+        <div class="dropdown">
+          <button
+            tabindex="-1"
+            class="dropbtn"
+            aria-haspopup="listbox"
+            aria-expanded="true"
+            aria-activedescendant="listbox1"
+            role="listbox"
+          >
+            <div class="dropbtn-text">Popularité</div>
+          </button>
+          <div tabindex="4" id="dropdownArrow" class="dropdown-arrow">
+            <i class="fa fa-solid fa-chevron-down" onclick="showDropdown()"></i>
+          </div>
+          <div id="dropdownContainer" class="dropdown-content">
+            <!-- toggle .show -->
+            <span
+              tabindex="4"
+              class="listbox-option option1 white-border"
+              role="button"
+              data-sort="popularity"
+              value="popularity"
+            >
+              <div id="listbox1" class="listbox-option-text1">Popularité</div>
+              <div class="dropdown-arrow">
+                <i class="fa fa-solid fa-chevron-up"></i>
+              </div>
+            </span>
+            <span
+              tabindex="4"
+              class="listbox-option option2"
+              role="button"
+              data-sort="title"
+              value="title"
+            >
+              <div id="listbox2" class="listbox-option-text2">Titre</div>
+            </span>
+          </div>
+        </div>
+      </label>
       <!-- SECTION Photographer medias-->
       <section
         class="photographers-media-cards"
@@ -126,6 +175,7 @@
     </div>
     <script src="scripts/utils/lightbox.js" defer></script>
     <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/utils/dropdown.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>

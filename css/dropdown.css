@@ -1,0 +1,116 @@
+
+  #trier-par {
+    font-weight: 600;
+  }
+
+  #listbox-label {
+    display: flex;
+    position: relative;
+    min-width: 70px;
+    top: 0px;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 0 30px 0;
+  } 
+  
+  .dropdown-arrow {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+    font-size: large;
+    color: white;
+    cursor: pointer;
+  } 
+
+  .dropbtn {
+    background-color: #901C1C;
+    border-radius: 3px;
+    width: 170px;
+    height: 69px; 
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer
+  }
+
+  .dropbtn-text {
+    position: absolute;
+    top: 23px;
+    left: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #901C1C;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 40px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 0; 
+    background-color: #f1f1f1;
+    min-width: 170px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown-content .listbox-option {
+    left: 50px;
+    color: white;
+    background-color: #901C1C;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    height: 40px;
+  }
+
+  .option1 {
+    border-radius: 5px 5px 0 0;
+  }
+  .option2 {
+    border-radius: 0 0 5px 5px ;
+  }
+
+  .listbox-option-text1 {
+    position: absolute;
+    top: 23px;
+    left: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .listbox-option-text2 {
+    position: absolute;
+    top: 88px;
+    left: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .white-border:after {
+    display:block;
+    content: ''; 
+    height: 1px; 
+    top: 64px;
+    left: 5%;
+    background: white;
+    position: absolute;
+    justify-content: center;
+    width: 90%;
+    color: 1px solid #f1f1f1;
+
+  }
+
+  .dropdown a:hover {background-color: #901C1C;}
+  
+  .show {display: block;}

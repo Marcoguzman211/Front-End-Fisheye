@@ -3,20 +3,20 @@ const photographerFactory = data => {
       const picture = `assets/photographersID/${portrait}`; // Get .jpg 
     
       function getUserCardDOM() { // Build DOM 
-        const article = document.createElement('article');
-        const a = document.createElement('a');
-        a.setAttribute('href', `./photographer.html?id=${id}`); //Envoie vers la page de chaque photographe
-        article.setAttribute('id', id);
-        const img = document.createElement('img');
-        img.setAttribute('src', picture);
-        img.setAttribute('alt', `${name} photographer portrait`);
-        const h2 = document.createElement('h2');
+        const article = document.createElement("article");
+        const a = document.createElement("a");
+        a.setAttribute("href", `./photographer.html?id=${id}`); //Envoie vers la page de chaque photographe
+        article.setAttribute("id", id);
+        const img = document.createElement("img");
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", `${name} photographer portrait`);
+        const h2 = document.createElement("h2");
         h2.textContent = name;
-        const h4 = document.createElement('h4');
+        const h4 = document.createElement("h4");
         h4.textContent = `${city}, ${country}`;
-        const h5 = document.createElement('h5');
+        const h5 = document.createElement("h5");
         h5.textContent = tagline;
-        const h6 = document.createElement('h6');
+        const h6 = document.createElement("h6");
         h6.textContent = `${price}€/jour`;
     
         article.appendChild(a);
@@ -42,14 +42,14 @@ const photographerFactory = data => {
 
 //Affichage carte avec bouton modale
 const getHeaderCardDOM = (data) => {
-    const {city, country, name, portrait, tagline} = data
+    const {city, country, name, portrait, tagline} = data;
     const picture = `assets/photographersID/${portrait}`; 
 
     document.querySelector("#photographerNameContact").textContent = name;
 
 
-    const article = document.createElement('article');
-    const div = document.createElement('div');
+    const article = document.createElement("article");
+    const div = document.createElement("div");
     const img = document.createElement('img');
     img.setAttribute('tabindex', '4')
     img.setAttribute('src', picture);
@@ -64,7 +64,7 @@ const getHeaderCardDOM = (data) => {
     h3.textContent = tagline;
     h3.setAttribute('tabindex', '4')
     const span = document.createElement('span');
-    span.innerHTML = '<button tabindex="4" class="contact-button" role="button" onclick="displayModal()">Contactez-moi</button>';
+    span.innerHTML = `<button tabindex="4" class="contact-button" role="button" onclick="displayModal()">Contactez-moi</button>`;
     article.appendChild(div);
     div.appendChild(h1);
     div.appendChild(h2);
@@ -80,21 +80,21 @@ const mediasFactory = (data) => {
     const { date, id, image, video, likes, photographerId,  price, title } = data
 
     const getMediaCardDOM = () => {
-        if (data.hasOwnProperty('image')) {
+        if (data.hasOwnProperty("image")) {
             return createImageDOM(data);
         } else {
             return createVideoDOM(data);
         }
 
        /*  data.hasOwnProperty('image') ? createImageDOM(data) : createVideoDOM(data)  ?? pk ça ne marche pas ?*/ 
-    }
+    };
     return { date, id, image, video, likes, photographerId,  price, title, getMediaCardDOM } 
-}
+};
 
 const createImageDOM = (data) => {
-    const { image, likes, photographerId, title } = data
-    const figure = document.createElement("figure")
-    figure.classList.add("card")
+    const { image, likes, photographerId, title } = data;
+    const figure = document.createElement("figure");
+    figure.classList.add("card");
     const content = `<img src="./assets/photographersMedias/${photographerId}/${image}" alt="${title}"></img>
     <div>
         <h2 tabindex="5">${title}</h2>
@@ -104,13 +104,13 @@ const createImageDOM = (data) => {
         </div>
     </div>`;
     figure.innerHTML =(content);
-    return figure
-}
+    return figure;
+};
 
 const createVideoDOM = (data) => {
-    const { video, likes, photographerId, title } = data
-    const figure = document.createElement("figure")
-    figure.classList.add("card")
+    const { video, likes, photographerId, title } = data;
+    const figure = document.createElement("figure");
+    figure.classList.add("card");
     const content = `<video class="video" src="./assets/photographersMedias/${photographerId}/${video}" alt="${title}"></video>
     <div>
         <h2 tabindex="5">${title}</h2>
@@ -120,6 +120,6 @@ const createVideoDOM = (data) => {
         </div>
     </div>`;
     figure.innerHTML =(content);
-    return figure
+    return figure;
     
-}
+};

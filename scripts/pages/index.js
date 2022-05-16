@@ -1,10 +1,10 @@
     const getPhotographers = async () => {
-        return fetch('./data/photographers.json') // Get .json
+        return fetch("./data/photographers.json") // Get .json
             .then(response => response.json()) // Make JS object
             .then (data => {
                 return data;
             });
-    }
+    };
 
 
     function displayData(photographers) {
@@ -23,4 +23,4 @@
         displayData(photographers);
     };
 
-    init()
+    init();

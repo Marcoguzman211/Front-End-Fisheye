@@ -1,182 +1,108 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/contact.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="css/lightbox.css" />
-    <link rel="stylesheet" href="css/dropdown.css" />
-    <title>Fisheye - photographe</title>
-  </head>
-  <body>
-    <header id="header">
-      <a href="index.html">
-        <img id="logo-site" src="assets/images/logo.png" class="logo" />
-      </a>
-    </header>
-    <main id="main">
-      <!-- <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/lightbox.css" />
+  <link rel="stylesheet" href="css/dropdown.css" />
+  <title>Fisheye - photographe</title>
+</head>
+
+<body>
+  <header id="header">
+    <a href="index.html">
+      <img id="logo-site" src="assets/images/logo.png" class="logo" />
+    </a>
+  </header>
+  <main id="main">
+    <section class="photograph-header" role="region" aria-label="Profil photographe"></section>
+    <!-- Dropdown menu -->
+    <label tabindex="4" id="trier-par" for="" selection aria-label="Sort by menu">Trier par
+      <div class="dropdown">
+        <button tabindex="-1" class="dropbtn" aria-haspopup="listbox" aria-expanded="true"
+          aria-activedescendant="listbox1" role="listbox">
+          <div class="dropbtn-text">Popularité</div>
         </button>
-      </div> -->
-      <section
-        class="photograph-header"
-        role="region"
-        aria-label="Profil photographe"
-      ></section>
-      <!-- Dropdown menu -->
-      <label
-        tabindex="4"
-        id="trier-par"
-        for=""
-        selection
-        aria-label="Sort by menu"
-        >Trier par
-        <div class="dropdown">
-          <button
-            tabindex="-1"
-            class="dropbtn"
-            aria-haspopup="listbox"
-            aria-expanded="true"
-            aria-activedescendant="listbox1"
-            role="listbox"
-          >
-            <div class="dropbtn-text">Popularité</div>
-          </button>
-          <div tabindex="4" id="dropdownArrow" class="dropdown-arrow">
-            <i class="fa fa-solid fa-chevron-down" onclick="showDropdown()"></i>
-          </div>
-          <div id="dropdownContainer" class="dropdown-content">
-            <!-- toggle .show -->
-            <span
-              tabindex="4"
-              class="listbox-option option1 white-border"
-              role="button"
-              data-sort="popularity"
-              value="popularity"
-            >
-              <div id="listbox1" class="listbox-option-text1">Popularité</div>
-              <div class="dropdown-arrow">
-                <i class="fa fa-solid fa-chevron-up"></i>
-              </div>
-            </span>
-            <span
-              tabindex="4"
-              class="listbox-option option2"
-              role="button"
-              data-sort="title"
-              value="title"
-            >
-              <div id="listbox2" class="listbox-option-text2">Titre</div>
-            </span>
-          </div>
+        <div tabindex="4" id="dropdownArrow" class="dropdown-arrow">
+          <i class="fa fa-solid fa-chevron-down" onclick="showDropdown()"></i>
         </div>
-      </label>
-      <!-- SECTION Photographer medias-->
-      <section
-        class="photographers-media-cards"
-        role="region"
-        aria-label="photographer medias catalog"
-      ></section>
-      <!--Photographer likes & price-->
-      <footer
-        tabindex="4"
-        class="footer"
-        role="Content information"
-        aria-label="total likes and price"
-      ></footer>
-    </main>
-    <!--Lightbox modal-->
-    <div id="lightbox" role="dialog" aria-label="Image closeup view">
-      <button
-        role="link"
-        aria-label="Next image"
-        class="lightbox-button lightbox__next"
-      >
-        Suivant
-      </button>
-      <button
-        role="link"
-        aria-label="Previous image"
-        class="lightbox-button lightbox__prev"
-      >
-        Précédent
-      </button>
-      <button
-        role="button"
-        aria-label="Close dialog"
-        class="lightbox-button lightbox__close"
-        onclick="closeLightbox()"
-      >
-        Fermer
-      </button>
-      <div class="lightbox__container">
-        <div class="lightbox-media-title"></div>
+        <div id="dropdownContainer" class="dropdown-content">
+          <!-- toggle .show -->
+          <span tabindex="4" class="listbox-option option1 white-border" role="button" data-sort="popularity"
+            value="popularity">
+            <div id="listbox1" class="listbox-option-text1">Popularité</div>
+            <div class="dropdown-arrow">
+              <i class="fa fa-solid fa-chevron-up"></i>
+            </div>
+          </span>
+          <span tabindex="4" class="listbox-option option2" role="button" data-sort="title" value="title">
+            <div id="listbox2" class="listbox-option-text2">Titre</div>
+          </span>
+        </div>
       </div>
+    </label>
+    <!-- SECTION Photographer medias-->
+    <section class="photographers-media-cards" role="region" aria-label="photographer medias catalog"></section>
+    <!--Photographer likes & price-->
+    <footer tabindex="4" class="footer" role="Content information" aria-label="total likes and price"></footer>
+  </main>
+  <!--Lightbox modal-->
+  <div id="lightbox" role="dialog" aria-label="Image closeup view">
+    <button role="link" aria-label="Next image" class="lightbox-button lightbox__next">
+      Suivant
+    </button>
+    <button role="link" aria-label="Previous image" class="lightbox-button lightbox__prev">
+      Précédent
+    </button>
+    <button role="button" aria-label="Close dialog" class="lightbox-button lightbox__close" onclick="closeLightbox()">
+      Fermer
+    </button>
+    <div class="lightbox__container">
+      <div class="lightbox-media-title"></div>
     </div>
-    <!--Contact form modal-->
-    <div
-      id="contact_modal"
-      role="dialog"
-      aria-hidden="true"
-      aria-modal="true"
-      aria-describedby="contact modal"
-    >
-      <div class="modal">
-        <header>
-          <div class="contact_header_top">
-            <h2>Contactez-moi</h2>
-            <button class="modal__close">
-              <img
-                src="assets/icons/close.svg"
-                onclick="closeModal()"
-                alt="close button"
-              />
-            </button>
-          </div>
-          <h2 id="photographerNameContact"></h2>
-        </header>
-        <form
-          method="get"
-          action="index.html"
-          role="form"
-          aria-label="photographer contact form"
-          novalidate="true"
-        >
-          <fieldset role="group">
-            <label tabindex="0" for="firstname">Prénom</label>
-            <input tabindex="0" type="text" name="firstname" id="firstname" />
-            <label tabindex="0" for="lastname">Nom</label>
-            <input tabindex="0" type="text" name="lastname" id="lastname" />
-            <label tabindex="0" for="email">Email</label>
-            <input tabindex="0" type="email" name="email" id="email" />
-            <label tabindex="0" for="message">Votre message</label>
-            <textarea tabindex="0" id="message"></textarea>
-          </fieldset>
-          <button tabindex="0" type="submit" class="contact-button">
-            Envoyer
+  </div>
+  <!--Contact form modal-->
+  <div id="contact_modal" role="dialog" aria-hidden="true" aria-modal="true" aria-describedby="contact modal">
+    <div class="modal">
+      <header>
+        <div class="contact_header_top">
+          <h2>Contactez-moi</h2>
+          <button class="modal__close">
+            <img src="assets/icons/close.svg" onclick="closeModal()" alt="close button" />
           </button>
-        </form>
-      </div>
+        </div>
+        <h2 id="photographerNameContact"></h2>
+      </header>
+      <form method="get" action="index.html" role="form" aria-label="photographer contact form" novalidate="true">
+        <fieldset role="group">
+          <label tabindex="0" for="firstname">Prénom</label>
+          <input tabindex="0" type="text" name="firstname" id="firstname" />
+          <label tabindex="0" for="lastname">Nom</label>
+          <input tabindex="0" type="text" name="lastname" id="lastname" />
+          <label tabindex="0" for="email">Email</label>
+          <input tabindex="0" type="email" name="email" id="email" />
+          <label tabindex="0" for="message">Votre message</label>
+          <textarea tabindex="0" id="message"></textarea>
+        </fieldset>
+        <button tabindex="0" type="submit" class="contact-button">
+          Envoyer
+        </button>
+      </form>
     </div>
-    <script src="scripts/utils/lightbox.js" defer></script>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/utils/dropdown.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
-  </body>
+  </div>
+  <script src="scripts/utils/lightbox.js" defer></script>
+  <script src="scripts/factories/photographer.js"></script>
+  <script src="scripts/utils/dropdown.js"></script>
+  <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/utils/contactForm.js"></script>
+</body>
+
 </html>

@@ -177,9 +177,7 @@ init(); //Affichage des médias
 
 const mediasDOM = (mediasToDisplay) => {
   const mediasCardsFigure = document.querySelectorAll('.photographers-media-cards > figure');
-  for (const [index, figure] of mediasCardsFigure.entries()) { // [index(key), figure(value)]
-    // LIKES 
-    // Add or substract like to figure and total
+  mediasCardsFigure.forEach(figure => {
     const addLike = () => {
       figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) + 1;
       mediasLikesTotal++;
@@ -243,46 +241,7 @@ const mediasDOM = (mediasToDisplay) => {
           mediaGetVideo(sourceMediaClicked, lightboxContainer, titleMediaClicked); 
           displayLightbox();
         } 
-      }
+      } 
     });
-
-  }  
-
-  document.querySelector('.lightbox__prev').addEventListener('click', previousLightbox)
-  document.querySelector('.lightbox__next').addEventListener('click', nextLightbox)
-
-  window.addEventListener('keydown', (e) => {
-    if (e.code === 'ArrowLeft') {
-      previousLightbox();
-    } else if (e.code === 'ArrowRight') {
-      nextLightbox();
-    } else if (e.code == "Escape") {
-      closeLightbox();
-    }
-  })
-}
-
-/* document.querySelector(".photograph-header").addEventListener("click", async () => {
-  document.querySelector('.photographers-media-cards').innerHTML = ""
-  document.querySelector('.photograph-header').innerHTML = ""
-  document.querySelector("footer").innerHTML = ""
-  mediasLikesTotal = 0
-  const data = await getPhotographersData();
-  data.media.sort((a, b) => {
-    if (a.title < b.title) {
-      return -1;
-    }
-    if (a.title > b.title) {
-      return 1;
-    }
-    return 0;
   });
-
-  sortedData = {
-    media: data.media,
-    photographers: data.photographers
-  }
-  
-  console.log(sortedData)
-  displayData(sortedData)
-}) */
+};

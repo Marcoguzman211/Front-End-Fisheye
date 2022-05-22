@@ -244,4 +244,18 @@ const mediasDOM = (mediasToDisplay) => {
       } 
     });
   });
+
+  document.querySelector(".lightbox__prev").addEventListener("click", previousLightbox);
+  document.querySelector(".lightbox__next").addEventListener("click", nextLightbox);
+
+  window.addEventListener("keydown", (e) => {
+    if (e.code === "ArrowLeft") {
+      previousLightbox();
+    } else if (e.code === "ArrowRight") {
+      nextLightbox();
+    } else if (e.code == "Escape") {
+      closeLightbox();
+    }
+  });
 };
+

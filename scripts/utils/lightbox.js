@@ -56,6 +56,7 @@ const previousLightbox = () => {
 };
 
 const nextLightbox = () => {
+  console.log("Hello world");
   const mediasCardsFigure = document.querySelectorAll(".photographers-media-cards > figure");
   const allMedias = Array.from(mediasCardsFigure);
   const found = allMedias.find(media => media.querySelector("h2").textContent === lightboxContainer.querySelector("h2").textContent);

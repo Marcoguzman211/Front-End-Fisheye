@@ -8,6 +8,6 @@ module.exports = {
     },
     "rules": {
         "semi": ["error", "always"],
-        "quotes": ["double", {"avoidEscape": true, "allowTemplateLiterals": true}]
+        "quotes": ["error", "double", { "allowTemplateLiterals": true }]
     }
-}
+};

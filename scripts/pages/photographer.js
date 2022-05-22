@@ -54,23 +54,23 @@ const displayData = (data) => {
         const inputs = document.querySelectorAll("input");
         inputs.forEach(input => console.log(input.value));
         console.log(document.querySelector("textarea").value);
-      })
+      });
 
       const removeAllChildNodes = (parent) => {
         while (parent.firstChild) {
           parent.removeChild(parent.firstChild);
         }
-      }
+      };
       // Sort by title  
       const sortByTitle = () => {
-        const mediasCards = document.querySelector('.photographers-media-cards')
-        document.querySelector('.dropbtn-text').textContent = "Titre"
-        document.querySelector('.option1').setAttribute('data-sort', 'title')
-        document.querySelector('.option1').setAttribute('value', 'title')
-        document.querySelector('.listbox-option-text1').textContent = "Titre"
-        document.querySelector('.option2').setAttribute('data-sort', 'popularity')
-        document.querySelector('.option2').setAttribute('value', 'popularity')
-        document.querySelector('.listbox-option-text2').textContent = "Popularité"
+        const mediasCards = document.querySelector(".photographers-media-cards");
+        document.querySelector(".dropbtn-text").textContent = "Titre";
+        document.querySelector(".option1").setAttribute("data-sort", "title");
+        document.querySelector(".option1").setAttribute("value", "title");
+        document.querySelector(".listbox-option-text1").textContent = "Titre";
+        document.querySelector(".option2").setAttribute("data-sort", "popularity");
+        document.querySelector(".option2").setAttribute("value", "popularity");
+        document.querySelector(".listbox-option-text2").textContent = "Popularité";
         mediasToDisplay.sort((a, b) => {
           if (a.title < b.title) {
             return -1;
@@ -88,23 +88,23 @@ const displayData = (data) => {
           mediaCardsContainer.appendChild(mediaCardDOM);
           mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
         });
-        document.querySelector('.total_likes').remove();
-        document.querySelector('.price').remove();
+        document.querySelector(".total_likes").remove();
+        document.querySelector(".price").remove();
         mediasDOM(mediasToDisplay);
         displayPrice(photographerToDisplay.price);
       displayTotalLikes();
-      }
+      };
 
       // Sort by popularity  
       const sortByPopularity = () => {
-        const mediasCards = document.querySelector('.photographers-media-cards')
-        document.querySelector('.dropbtn-text').textContent = "Popularité"
-        document.querySelector('.option1').setAttribute('data-sort', 'popularity')
-        document.querySelector('.option1').setAttribute('value', 'popularity')
-        document.querySelector('.listbox-option-text1').textContent = "Popularité"
-        document.querySelector('.option2').setAttribute('data-sort', 'title')
-        document.querySelector('.option2').setAttribute('value', 'title')
-        document.querySelector('.listbox-option-text2').textContent = "Titre"
+        const mediasCards = document.querySelector(".photographers-media-cards");
+        document.querySelector(".dropbtn-text").textContent = "Popularité";
+        document.querySelector(".option1").setAttribute("data-sort", "popularity");
+        document.querySelector(".option1").setAttribute("value", "popularity");
+        document.querySelector(".listbox-option-text1").textContent = "Popularité";
+        document.querySelector(".option2").setAttribute("data-sort", "title");
+        document.querySelector(".option2").setAttribute("value", "title");
+        document.querySelector(".listbox-option-text2").textContent = "Titre";
         mediasToDisplay.sort((a, b) => {
           if (a.likes > b.likes) {
             return -1;
@@ -122,28 +122,28 @@ const displayData = (data) => {
           mediaCardsContainer.appendChild(mediaCardDOM);
           mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
         });
-        document.querySelector('.total_likes').remove();
-        document.querySelector('.price').remove();
+        document.querySelector(".total_likes").remove();
+        document.querySelector(".price").remove();
         displayPrice(photographerToDisplay.price);
       displayTotalLikes();
         mediasDOM(mediasToDisplay);
-      }
+      };
 
       // Click event, dropdown, sort by popularity or title
-      dropdownContainer.addEventListener('click', (e) => {
-        if (e.target.textContent == 'Titre') {
+      dropdownContainer.addEventListener("click", (e) => {
+        if (e.target.textContent == "Titre") {
           sortByTitle(); 
-        } else if (e.target.textContent == 'Popularité') {
+        } else if (e.target.textContent == "Popularité") {
           sortByPopularity(); 
         }
       });
-}
+};
 
 
  // FOOTER
  const displayPrice = (price) => {
-  const divPrice = document.createElement('div');
-  divPrice.classList.add('price');
+  const divPrice = document.createElement("div");
+  divPrice.classList.add("price");
   const priceCardDOM = `<h2 tabindex="4">${price}€ / jour</h2>`;
   divPrice.innerHTML = priceCardDOM;
   footer.append(divPrice);
@@ -151,8 +151,8 @@ const displayData = (data) => {
 
  // Display total likes
  const displayTotalLikes = () => {
-  const divLikes = document.createElement('div');
-  divLikes.classList.add('total_likes');
+  const divLikes = document.createElement("div");
+  divLikes.classList.add("total_likes");
   const mediasLikesTotalCardDOM = `<h2 tabindex="4" id="likes">${mediasLikesTotal}</h2>
                                     <div class="heart filter_icons"><i class="fa fa-heart fa-lg" title="heart icon"></i></div>`;
   divLikes.innerHTML = mediasLikesTotalCardDOM;
@@ -164,37 +164,37 @@ const displayData = (data) => {
     document.getElementById("likes").textContent = "";
   };
   const updateTotalLikes = () => {
-    document.getElementById('likes').textContent = mediasLikesTotal;
+    document.getElementById("likes").textContent = mediasLikesTotal;
   };
 
  const init = async () => {
   // Récupère les datas des photographes
   const data = await getPhotographersData();
   displayData(data);
-}
+};
 
 init(); //Affichage des médias
 
 const mediasDOM = (mediasToDisplay) => {
-  const mediasCardsFigure = document.querySelectorAll('.photographers-media-cards > figure');
+  const mediasCardsFigure = document.querySelectorAll(".photographers-media-cards > figure");
   mediasCardsFigure.forEach(figure => {
     const addLike = () => {
-      figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) + 1;
+      figure.getElementsByTagName("h2")[1].textContent = Math.floor(figure.getElementsByTagName("h2")[1].textContent) + 1;
       mediasLikesTotal++;
       removeTotalLikes();
       updateTotalLikes();
-    }
+    };
     const substractLike = () => {
-      figure.getElementsByTagName('h2')[1].textContent = Math.floor(figure.getElementsByTagName('h2')[1].textContent) - 1;
+      figure.getElementsByTagName("h2")[1].textContent = Math.floor(figure.getElementsByTagName("h2")[1].textContent) - 1;
       mediasLikesTotal--;
       removeTotalLikes();
       updateTotalLikes();
-    }
+    };
     // LIKES 
     // Event: click 
-    figure.querySelector('.heart').addEventListener('click', () => {
-      figure.classList.toggle('is_liked'); 
-      if (figure.classList.contains('is_liked')) {
+    figure.querySelector(".heart").addEventListener("click", () => {
+      figure.classList.toggle("is_liked"); 
+      if (figure.classList.contains("is_liked")) {
         addLike();
       } else {
         substractLike(); 
@@ -202,12 +202,12 @@ const mediasDOM = (mediasToDisplay) => {
     });
      // LIKES 
      // Event: keyup 
-     figure.querySelector('.heart').addEventListener('keyup', (event) => {
+     figure.querySelector(".heart").addEventListener("keyup", (event) => {
        event.preventDefault(); 
        event.stopPropagation();
-       if (event.code === 'Enter') {
-        figure.classList.toggle('is_liked'); 
-          if (figure.classList.contains('is_liked')) {
+       if (event.code === "Enter") {
+        figure.classList.toggle("is_liked"); 
+          if (figure.classList.contains("is_liked")) {
             addLike();
           } else {
             substractLike(); 
@@ -217,11 +217,11 @@ const mediasDOM = (mediasToDisplay) => {
     // LIGHTBOX
     // Get image or video media (used for click and keyboard)
     const sourceMediaClicked = figure.firstChild.src;
-    const titleMediaClicked = figure.getElementsByTagName('h2')[0].textContent;
-    const lightboxContainer = document.querySelector('.lightbox__container');
+    const titleMediaClicked = figure.getElementsByTagName("h2")[0].textContent;
+    const lightboxContainer = document.querySelector(".lightbox__container");
     // Add informations
     // Open on click
-    figure.firstChild.addEventListener('click', () => {
+    figure.firstChild.addEventListener("click", () => {
       if (sourceMediaClicked.match(imgRegex)) { 
         mediaGetImage(sourceMediaClicked, lightboxContainer, titleMediaClicked); 
         displayLightbox();
@@ -231,9 +231,9 @@ const mediasDOM = (mediasToDisplay) => {
       }
     });
     // Open on keyup
-    figure.addEventListener('keyup', (event) => {
+    figure.addEventListener("keyup", (event) => {
       event.preventDefault();
-      if (event.code === 'Enter') {
+      if (event.code === "Enter") {
         if (sourceMediaClicked.match(imgRegex)) { 
           mediaGetImage(sourceMediaClicked, lightboxContainer, titleMediaClicked);
           displayLightbox(); 

@@ -2,7 +2,7 @@ const photographerFactory = data => {
     const { name, id, portrait, city, country, tagline, price } = data; 
       const picture = `assets/photographersID/${portrait}`; // Get .jpg 
     
-      function getUserCardDOM() { // Build DOM 
+      const getUserCardDOM = () => { // Build DOM 
         const article = document.createElement("article");
         const a = document.createElement("a");
         a.setAttribute("href", `./photographer.html?id=${id}`); //Envoie vers la page de chaque photographe
@@ -27,7 +27,7 @@ const photographerFactory = data => {
         a.appendChild(h6);
     
         return (article);
-      }
+      };
       return { // an object keys/values
         name,
         id,
@@ -91,6 +91,7 @@ const mediasFactory = (data) => {
     return { date, id, image, video, likes, photographerId,  price, title, getMediaCardDOM }; 
 };
 
+//Fonction reutilisable qui sert à générer les cartes dans le grid de la page photographer.html
 const createImageDOM = (data) => {
     const { image, likes, photographerId, title } = data;
     const figure = document.createElement("figure");
@@ -123,3 +124,5 @@ const createVideoDOM = (data) => {
     return figure;
     
 };
+
+//Functions pour faire le tri

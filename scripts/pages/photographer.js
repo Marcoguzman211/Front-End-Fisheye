@@ -247,8 +247,20 @@ const mediasDOM = (mediasToDisplay) => {
 
   document.querySelector(".lightbox__prev").addEventListener("click", previousLightbox);
   document.querySelector(".lightbox__next").addEventListener("click", nextLightbox);
+  document.addEventListener("keyup", (e) => {
+    let displayValue = document.getElementById("lightbox").style.display;
+    if (displayValue === "block") {
+      if (e.code === "ArrowLeft") {
+        previousLightbox();
+      } else if (e.code === "ArrowRight") {
+        nextLightbox();
+      } else if (e.code == "Escape") {
+        closeLightbox();
+      }
+    }
+  });
 
-  window.addEventListener("keydown", (e) => {
+  /* window.addEventListener("keydown", (e) => {
     if (e.code === "ArrowLeft") {
       previousLightbox();
     } else if (e.code === "ArrowRight") {
@@ -256,6 +268,6 @@ const mediasDOM = (mediasToDisplay) => {
     } else if (e.code == "Escape") {
       closeLightbox();
     }
-  });
+  }); */
 };
 

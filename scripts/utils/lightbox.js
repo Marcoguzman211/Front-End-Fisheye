@@ -3,7 +3,7 @@
 // On diplay or close
 const lightbox = document.getElementById("lightbox");
 const lightboxContainer = document.querySelector(".lightbox__container");
-function displayLightbox() {
+const displayLightbox = () => {
   const header = document.getElementById("header");
 const footer = document.querySelector(".footer");
 const main = document.getElementById("main"); 
@@ -22,8 +22,9 @@ const main = document.getElementById("main");
   header.setAttribute("tabindex", "-1");
   header.setAttribute("aria-hidden", "true"); 
   header.style.visibility = "hidden"; 
-}
-function closeLightbox() {
+};
+
+const closeLightbox = () => {
   lightbox.style.display = "none";
   lightbox.setAttribute("aria-hidden", "true");
   lightboxContainer.innerHTML = "";
@@ -34,7 +35,7 @@ function closeLightbox() {
   footer.setAttribute("tabindex", "4");
   footer.style.visibility = "visible"; 
   header.style.visibility = "visible"; 
-}
+};
 
 const previousLightbox = () => {
   const mediasCardsFigure = document.querySelectorAll(".photographers-media-cards > figure");

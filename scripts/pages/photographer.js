@@ -90,9 +90,9 @@ const displayData = (data) => {
         });
         document.querySelector(".total_likes").remove();
         document.querySelector(".price").remove();
-        mediasDOM(mediasToDisplay);
         displayPrice(photographerToDisplay.price);
       displayTotalLikes();
+      mediasDOM(mediasToDisplay);
       };
 
       // Sort by popularity  
@@ -248,6 +248,7 @@ const mediasDOM = (mediasToDisplay) => {
   document.querySelector(".lightbox__prev").addEventListener("click", previousLightbox);
   document.querySelector(".lightbox__next").addEventListener("click", nextLightbox);
   document.addEventListener("keyup", (e) => {
+    e.stopImmediatePropagation();
     let displayValue = document.getElementById("lightbox").style.display;
     if (displayValue === "block") {
       if (e.code === "ArrowLeft") {

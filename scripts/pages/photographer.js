@@ -44,7 +44,7 @@ const displayData = (data) => {
         mediaCardsContainer.appendChild(mediaCardDOM);
         mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
       });
-      displayPrice(photographerToDisplay.price);
+      displayPrice(photographerToDisplay.price, footer);
       displayTotalLikes();
       mediasDOM(mediasToDisplay);
 
@@ -89,7 +89,7 @@ const displayData = (data) => {
     });
     document.querySelector(".total_likes").remove();
     document.querySelector(".price").remove();
-    displayPrice(photographerToDisplay.price);
+    displayPrice(photographerToDisplay.price, footer);
   displayTotalLikes();
   mediasDOM(mediasToDisplay);
   };
@@ -123,8 +123,8 @@ const displayData = (data) => {
         });
         document.querySelector(".total_likes").remove();
         document.querySelector(".price").remove();
-        displayPrice(photographerToDisplay.price);
-      displayTotalLikes();
+        displayPrice(photographerToDisplay.price, footer);
+        displayTotalLikes();
         mediasDOM(mediasToDisplay);
       };
 
@@ -140,44 +140,16 @@ const displayData = (data) => {
       dropdownContainer.addEventListener("keyup", (e) => {
         e.preventDefault();
         e.stopImmediatePropagation();
+        const typeOfSorting = e.target.textContent.trim();
         if (e.code === "Enter") {
-          console.log("Hola");
-          if (e.target.textContent.trim() === "Titre") {
+          if (typeOfSorting === "Titre") {
             sortByTitle(); 
-          } else if (e.target.textContent.trim() === "Popularité") {
+          } else if (typeOfSorting === "Popularité") {
             sortByPopularity(); 
           }
         }
       });
 };
-
-
- // FOOTER
- const displayPrice = (price) => {
-  const divPrice = document.createElement("div");
-  divPrice.classList.add("price");
-  const priceCardDOM = `<h2 tabindex="4">${price}€ / jour</h2>`;
-  divPrice.innerHTML = priceCardDOM;
-  footer.append(divPrice);
-};
-
- // Display total likes
- const displayTotalLikes = () => {
-  const divLikes = document.createElement("div");
-  divLikes.classList.add("total_likes");
-  const mediasLikesTotalCardDOM = `<h2 tabindex="4" id="likes">${mediasLikesTotal}</h2>
-                                    <div class="heart filter_icons"><i class="fa fa-heart fa-lg" title="heart icon"></i></div>`;
-  divLikes.innerHTML = mediasLikesTotalCardDOM;
-  footer.prepend(divLikes);
-  };
-
-  // Update total likes
-  const removeTotalLikes = () => {
-    document.getElementById("likes").textContent = "";
-  };
-  const updateTotalLikes = () => {
-    document.getElementById("likes").textContent = mediasLikesTotal;
-  };
 
  const init = async () => {
   // Récupère les datas des photographes
@@ -272,15 +244,5 @@ const mediasDOM = (mediasToDisplay) => {
       }
     }
   });
-
-  /* window.addEventListener("keydown", (e) => {
-    if (e.code === "ArrowLeft") {
-      previousLightbox();
-    } else if (e.code === "ArrowRight") {
-      nextLightbox();
-    } else if (e.code == "Escape") {
-      closeLightbox();
-    }
-  }); */
 };
 

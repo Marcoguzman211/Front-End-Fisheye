@@ -14,6 +14,8 @@ const getPhotographersData = async () => {
 };
 
 const displayData = (data) => {
+
+  const mediasCards = document.querySelector(".photographers-media-cards");
     const searchParams = new URLSearchParams(window.location.search); // Empty URLSearchParams object pour cibler l'url
     const mediaCardsContainer = document.querySelector(".photographers-media-cards");
     const photographHeader = document.querySelector(".photograph-header");
@@ -47,65 +49,12 @@ const displayData = (data) => {
         console.log(document.querySelector("textarea").value);
       });
 
-      
-      // Sort by title  
-    const sortByTitle = () => {
-    const mediasCards = document.querySelector(".photographers-media-cards");
-    document.querySelector(".dropbtn-text").textContent = "Titre";
-    document.querySelector(".option1").setAttribute("data-sort", "title");
-    document.querySelector(".option1").setAttribute("value", "title");
-    document.querySelector(".listbox-option-text1").textContent = "Titre";
-    document.querySelector(".option2").setAttribute("data-sort", "popularity");
-    document.querySelector(".option2").setAttribute("value", "popularity");
-    document.querySelector(".listbox-option-text2").textContent = "Popularité";
-    mediasToDisplay.sort(functionByTitle);
-    removeAllChildNodes(mediasCards);
-    mediasLikesTotal = 0;
-    mediasToDisplay.forEach(media => {
-      const mediaModel = mediasFactory(media);
-      const mediaCardDOM = mediaModel.getMediaCardDOM();
-      mediaCardsContainer.appendChild(mediaCardDOM);
-      mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
-    });
-    document.querySelector(".total_likes").remove();
-    document.querySelector(".price").remove();
-    displayPrice(photographerToDisplay.price, footer);
-    displayTotalLikes();
-    mediasDOM(mediasToDisplay);
-  };
-
-    // Sort by popularity  
-    const sortByPopularity = () => {
-      const mediasCards = document.querySelector(".photographers-media-cards");
-      document.querySelector(".dropbtn-text").textContent = "Popularité";
-      document.querySelector(".option1").setAttribute("data-sort", "popularity");
-      document.querySelector(".option1").setAttribute("value", "popularity");
-      document.querySelector(".listbox-option-text1").textContent = "Popularité";
-      document.querySelector(".option2").setAttribute("data-sort", "title");
-      document.querySelector(".option2").setAttribute("value", "title");
-      document.querySelector(".listbox-option-text2").textContent = "Titre";
-      mediasToDisplay.sort(functionByLikes);
-      removeAllChildNodes(mediasCards);
-      mediasLikesTotal = 0;
-      mediasToDisplay.forEach(media => {
-        const mediaModel = mediasFactory(media);
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        mediaCardsContainer.appendChild(mediaCardDOM);
-        mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
-      });
-      document.querySelector(".total_likes").remove();
-      document.querySelector(".price").remove();
-      displayPrice(photographerToDisplay.price, footer);
-      displayTotalLikes();
-      mediasDOM(mediasToDisplay);
-    };
-
       // Click event, dropdown, sort by popularity or title
       dropdownContainer.addEventListener("click", (e) => {
         if (e.target.textContent == "Titre") {
-          sortByTitle(); 
+          sortByTitle(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
         } else if (e.target.textContent == "Popularité") {
-          sortByPopularity(); 
+          sortByPopularity(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
         }
       });
 
@@ -115,9 +64,9 @@ const displayData = (data) => {
         const typeOfSorting = e.target.textContent.trim();
         if (e.code === "Enter") {
           if (typeOfSorting === "Titre") {
-            sortByTitle(); 
+            sortByTitle(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
           } else if (typeOfSorting === "Popularité") {
-            sortByPopularity(); 
+            sortByPopularity(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
           }
         }
       });

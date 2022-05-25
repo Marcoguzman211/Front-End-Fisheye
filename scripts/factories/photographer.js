@@ -126,6 +126,47 @@ const createVideoDOM = (data) => {
 };
 
 //Functions pour faire le tri
+const functionByLikes = (a, b) => {
+    if (a.likes > b.likes) {
+      return -1;
+    }
+    if (a.likes < b.likes) {
+      return 1;
+    }
+    return 0;
+  };
+
+const functionByTitle = (a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  };
+
+
+//Function qui sert à vider le grid des cards
+const removeAllChildNodes = (parent) => {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+};
+
+//LIKES
+const addLike = (figure) => {
+    figure.getElementsByTagName("h2")[1].textContent = Math.floor(figure.getElementsByTagName("h2")[1].textContent) + 1;
+    mediasLikesTotal++;
+    removeTotalLikes();
+    updateTotalLikes();
+  };
+  const substractLike = (figure) => {
+    figure.getElementsByTagName("h2")[1].textContent = Math.floor(figure.getElementsByTagName("h2")[1].textContent) - 1;
+    mediasLikesTotal--;
+    removeTotalLikes();
+    updateTotalLikes();
+  };
 
  // Display total likes
  const displayTotalLikes = () => {

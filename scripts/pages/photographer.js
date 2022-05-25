@@ -29,15 +29,7 @@ const displayData = (data) => {
       );
 
       //Trie le médias par popularité, par défaut avant de les afficher.
-      mediasToDisplay.sort((a, b) => {
-        if (a.likes > b.likes) {
-          return -1;
-        }
-        if (a.likes < b.likes) {
-          return 1;
-        }
-        return 0;
-      });
+      mediasToDisplay.sort(functionByLikes);
       mediasToDisplay.forEach(media => {
         const mediaModel = mediasFactory(media);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
@@ -55,13 +47,9 @@ const displayData = (data) => {
         console.log(document.querySelector("textarea").value);
       });
 
-      const removeAllChildNodes = (parent) => {
-        while (parent.firstChild) {
-          parent.removeChild(parent.firstChild);
-        }
-      };
+      
       // Sort by title  
-      const sortByTitle = () => {
+    const sortByTitle = () => {
     const mediasCards = document.querySelector(".photographers-media-cards");
     document.querySelector(".dropbtn-text").textContent = "Titre";
     document.querySelector(".option1").setAttribute("data-sort", "title");
@@ -70,15 +58,7 @@ const displayData = (data) => {
     document.querySelector(".option2").setAttribute("data-sort", "popularity");
     document.querySelector(".option2").setAttribute("value", "popularity");
     document.querySelector(".listbox-option-text2").textContent = "Popularité";
-    mediasToDisplay.sort((a, b) => {
-      if (a.title < b.title) {
-        return -1;
-      }
-      if (a.title > b.title) {
-        return 1;
-      }
-      return 0;
-    });
+    mediasToDisplay.sort(functionByTitle);
     removeAllChildNodes(mediasCards);
     mediasLikesTotal = 0;
     mediasToDisplay.forEach(media => {
@@ -90,43 +70,35 @@ const displayData = (data) => {
     document.querySelector(".total_likes").remove();
     document.querySelector(".price").remove();
     displayPrice(photographerToDisplay.price, footer);
-  displayTotalLikes();
-  mediasDOM(mediasToDisplay);
+    displayTotalLikes();
+    mediasDOM(mediasToDisplay);
   };
 
-      // Sort by popularity  
-      const sortByPopularity = () => {
-        const mediasCards = document.querySelector(".photographers-media-cards");
-        document.querySelector(".dropbtn-text").textContent = "Popularité";
-        document.querySelector(".option1").setAttribute("data-sort", "popularity");
-        document.querySelector(".option1").setAttribute("value", "popularity");
-        document.querySelector(".listbox-option-text1").textContent = "Popularité";
-        document.querySelector(".option2").setAttribute("data-sort", "title");
-        document.querySelector(".option2").setAttribute("value", "title");
-        document.querySelector(".listbox-option-text2").textContent = "Titre";
-        mediasToDisplay.sort((a, b) => {
-          if (a.likes > b.likes) {
-            return -1;
-          }
-          if (a.likes < b.likes) {
-            return 1;
-          }
-          return 0;
-        });
-        removeAllChildNodes(mediasCards);
-        mediasLikesTotal = 0;
-        mediasToDisplay.forEach(media => {
-          const mediaModel = mediasFactory(media);
-          const mediaCardDOM = mediaModel.getMediaCardDOM();
-          mediaCardsContainer.appendChild(mediaCardDOM);
-          mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
-        });
-        document.querySelector(".total_likes").remove();
-        document.querySelector(".price").remove();
-        displayPrice(photographerToDisplay.price, footer);
-        displayTotalLikes();
-        mediasDOM(mediasToDisplay);
-      };
+    // Sort by popularity  
+    const sortByPopularity = () => {
+      const mediasCards = document.querySelector(".photographers-media-cards");
+      document.querySelector(".dropbtn-text").textContent = "Popularité";
+      document.querySelector(".option1").setAttribute("data-sort", "popularity");
+      document.querySelector(".option1").setAttribute("value", "popularity");
+      document.querySelector(".listbox-option-text1").textContent = "Popularité";
+      document.querySelector(".option2").setAttribute("data-sort", "title");
+      document.querySelector(".option2").setAttribute("value", "title");
+      document.querySelector(".listbox-option-text2").textContent = "Titre";
+      mediasToDisplay.sort(functionByLikes);
+      removeAllChildNodes(mediasCards);
+      mediasLikesTotal = 0;
+      mediasToDisplay.forEach(media => {
+        const mediaModel = mediasFactory(media);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaCardsContainer.appendChild(mediaCardDOM);
+        mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
+      });
+      document.querySelector(".total_likes").remove();
+      document.querySelector(".price").remove();
+      displayPrice(photographerToDisplay.price, footer);
+      displayTotalLikes();
+      mediasDOM(mediasToDisplay);
+    };
 
       // Click event, dropdown, sort by popularity or title
       dropdownContainer.addEventListener("click", (e) => {
@@ -151,6 +123,7 @@ const displayData = (data) => {
       });
 };
 
+//Appel de la function au début pour afficher toute la page.
  const init = async () => {
   // Récupère les datas des photographes
   const data = await getPhotographersData();
@@ -162,26 +135,14 @@ init(); //Affichage des médias
 const mediasDOM = (mediasToDisplay) => {
   const mediasCardsFigure = document.querySelectorAll(".photographers-media-cards > figure");
   mediasCardsFigure.forEach(figure => {
-    const addLike = () => {
-      figure.getElementsByTagName("h2")[1].textContent = Math.floor(figure.getElementsByTagName("h2")[1].textContent) + 1;
-      mediasLikesTotal++;
-      removeTotalLikes();
-      updateTotalLikes();
-    };
-    const substractLike = () => {
-      figure.getElementsByTagName("h2")[1].textContent = Math.floor(figure.getElementsByTagName("h2")[1].textContent) - 1;
-      mediasLikesTotal--;
-      removeTotalLikes();
-      updateTotalLikes();
-    };
     // LIKES 
     // Event: click 
     figure.querySelector(".heart").addEventListener("click", () => {
       figure.classList.toggle("is_liked"); 
       if (figure.classList.contains("is_liked")) {
-        addLike();
+        addLike(figure);
       } else {
-        substractLike(); 
+        substractLike(figure); 
       }
     });
      // LIKES 
@@ -192,9 +153,9 @@ const mediasDOM = (mediasToDisplay) => {
        if (event.code === "Enter") {
         figure.classList.toggle("is_liked"); 
           if (figure.classList.contains("is_liked")) {
-            addLike();
+            addLike(figure);
           } else {
-            substractLike(); 
+            substractLike(figure); 
           } 
        }
     });

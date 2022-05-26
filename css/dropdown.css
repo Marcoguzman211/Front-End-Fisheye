@@ -76,6 +76,9 @@
     border-radius: 5px 5px 0 0;
   }
   .option2 {
+    border-radius: 0 0;
+  }
+  .option3 {
     border-radius: 0 0 5px 5px ;
   }
 
@@ -97,11 +100,33 @@
     font-weight: 400;
   }
 
+  .listbox-option-text3 {
+    position: absolute;
+    top: 145px;
+    left: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
   .white-border:after {
     display:block;
     content: ''; 
     height: 1px; 
     top: 64px;
+    left: 5%;
+    background: white;
+    position: absolute;
+    justify-content: center;
+    width: 90%;
+    color: 1px solid #f1f1f1;
+
+  }
+  .white-border2:after {
+    display:block;
+    content: ''; 
+    height: 1px; 
+    top: 128px;
     left: 5%;
     background: white;
     position: absolute;

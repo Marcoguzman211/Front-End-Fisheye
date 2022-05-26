@@ -144,6 +144,16 @@ const functionByTitle = (a, b) => {
     return 0;
   };
 
+const functionByDate = (a, b) => {
+  if (a.date < b.date) {
+    return -1;
+  }
+  if (a.date > b.date) {
+    return 1;
+  }
+  return 0;
+};
+
 
 //Function qui sert à vider le grid des cards
 const removeAllChildNodes = (parent) => {
@@ -161,6 +171,9 @@ const sortByTitle = (mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsC
     document.querySelector(".option2").setAttribute("data-sort", "popularity");
     document.querySelector(".option2").setAttribute("value", "popularity");
     document.querySelector(".listbox-option-text2").textContent = "Popularité";
+    document.querySelector(".option3").setAttribute("data-sort", "date");
+    document.querySelector(".option3").setAttribute("value", "date");
+    document.querySelector(".listbox-option-text3").textContent = "Date";
     mediasToDisplay.sort(functionByTitle);
     removeAllChildNodes(mediasCards);
     mediasLikesTotal = 0;
@@ -183,9 +196,12 @@ const sortByPopularity = (mediasCards, mediasToDisplay, mediasLikesTotal, mediaC
     document.querySelector(".option1").setAttribute("data-sort", "popularity");
     document.querySelector(".option1").setAttribute("value", "popularity");
     document.querySelector(".listbox-option-text1").textContent = "Popularité";
-    document.querySelector(".option2").setAttribute("data-sort", "title");
-    document.querySelector(".option2").setAttribute("value", "title");
-    document.querySelector(".listbox-option-text2").textContent = "Titre";
+    document.querySelector(".option2").setAttribute("data-sort", "date");
+    document.querySelector(".option2").setAttribute("value", "date");
+    document.querySelector(".listbox-option-text2").textContent = "Date";
+    document.querySelector(".option3").setAttribute("data-sort", "title");
+    document.querySelector(".option3").setAttribute("value", "title");
+    document.querySelector(".listbox-option-text3").textContent = "Titre";
     mediasToDisplay.sort(functionByLikes);
     removeAllChildNodes(mediasCards);
     mediasLikesTotal = 0;
@@ -201,6 +217,35 @@ const sortByPopularity = (mediasCards, mediasToDisplay, mediasLikesTotal, mediaC
     displayTotalLikes();
     mediasDOM(mediasToDisplay);
   };
+
+
+  // Sort by title  
+const sortByDate = (mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay) => {
+  document.querySelector(".dropbtn-text").textContent = "Date";
+  document.querySelector(".option1").setAttribute("data-sort", "date");
+  document.querySelector(".option1").setAttribute("value", "date");
+  document.querySelector(".listbox-option-text1").textContent = "Date";
+  document.querySelector(".option2").setAttribute("data-sort", "title");
+  document.querySelector(".option2").setAttribute("value", "title");
+  document.querySelector(".listbox-option-text2").textContent = "Titre";
+  document.querySelector(".option3").setAttribute("data-sort", "popularity");
+  document.querySelector(".option3").setAttribute("value", "popularity");
+  document.querySelector(".listbox-option-text3").textContent = "Popularité";
+  mediasToDisplay.sort(functionByDate);
+  removeAllChildNodes(mediasCards);
+  mediasLikesTotal = 0;
+  mediasToDisplay.forEach(media => {
+      const mediaModel = mediasFactory(media);
+      const mediaCardDOM = mediaModel.getMediaCardDOM();
+      mediaCardsContainer.appendChild(mediaCardDOM);
+      mediasLikesTotal += media.likes;  //Ajoute les likes de chaque media au nombre total
+  });
+  document.querySelector(".total_likes").remove();
+  document.querySelector(".price").remove();
+  displayPrice(photographerToDisplay.price, footer);
+  displayTotalLikes();
+  mediasDOM(mediasToDisplay);
+};
 
 //LIKES
 const addLike = (figure) => {

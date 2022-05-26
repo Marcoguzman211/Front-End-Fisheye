@@ -55,6 +55,8 @@ const displayData = (data) => {
           sortByTitle(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
         } else if (e.target.textContent == "Popularité") {
           sortByPopularity(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
+        } else if (e.target.textContent == "Date") {
+          sortByDate(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay);
         }
       });
 
@@ -67,6 +69,8 @@ const displayData = (data) => {
             sortByTitle(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
           } else if (typeOfSorting === "Popularité") {
             sortByPopularity(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
+          } else if (e.target.textContent == "Date") {
+            sortByDate(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay);
           }
         }
       });

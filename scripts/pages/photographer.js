@@ -69,9 +69,11 @@ const displayData = (data) => {
             sortByTitle(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
           } else if (typeOfSorting === "Popularité") {
             sortByPopularity(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay); 
-          } else if (e.target.textContent == "Date") {
+          } else if (typeOfSorting == "Date") {
             sortByDate(mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsContainer, photographerToDisplay);
           }
+        } else if (e.code === "Escape") {
+          document.getElementById("dropdownContainer").classList.remove("show");
         }
       });
 };

@@ -1,6 +1,7 @@
 
   #trier-par {
     font-weight: 600;
+    margin-left: 9%;
   }
 
   #listbox-label {
@@ -59,6 +60,7 @@
     min-width: 170px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-bottom: 70px;
   }
   
   .dropdown-content .listbox-option {

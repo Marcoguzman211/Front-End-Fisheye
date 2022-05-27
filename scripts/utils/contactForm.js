@@ -1,5 +1,6 @@
 const main = document.getElementById("main");
 const modal = document.getElementById("contact_modal");
+const closeButton = document.querySelector(".modal__close");
 
 //Foction qui gère l'affichage et l'accessibilité de la modale de contact
 const displayModal = () => {
@@ -28,3 +29,9 @@ document.addEventListener("keyup", (event) => {
       closeModal();
     }
   });
+
+closeButton.addEventListener("keyup", (e) => {
+  if (e.code === "Enter") {
+    closeModal();
+  }
+});

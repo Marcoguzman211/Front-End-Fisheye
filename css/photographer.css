@@ -8,12 +8,17 @@
 
 /* Photograph header */
 
+#header {
+    margin-left: 6.5%
+}
+
 .photograph-header {
     justify-content: space-between;
     align-items: center;
     background-color: #FAFAFA;
     height: 250px;
-    margin: 0;
+    margin: 0 9% 1% 9%;
+    padding: 0 2%;
 }
 
 .photograph-header article {
@@ -204,6 +209,7 @@ form input {
     border-top-right-radius: 5px;
     font-weight: 700;
     z-index: 9;
+    margin-top: 20%;
 }
 
 .footer .total_likes {

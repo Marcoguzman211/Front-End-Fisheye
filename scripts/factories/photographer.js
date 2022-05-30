@@ -1,6 +1,7 @@
+//Crée les cartes des photographes de la page d'accueil 
 const photographerFactory = data => {
     const { name, id, portrait, city, country, tagline, price } = data; 
-      const picture = `assets/photographersID/${portrait}`; // Get .jpg 
+      const picture = `assets/photographersID/${portrait}`; // Génère l'Url de l'image de chaque photographe
     
       const getUserCardDOM = () => { // Build DOM 
         const article = document.createElement("article");
@@ -40,7 +41,7 @@ const photographerFactory = data => {
       };
 };
 
-//Affichage carte avec bouton modale
+//Affichage header avec bouton modale de contact
 const getHeaderCardDOM = (data) => {
     const {city, country, name, portrait, tagline} = data;
     const picture = `assets/photographersID/${portrait}`; 
@@ -248,6 +249,16 @@ const sortByDate = (mediasCards, mediasToDisplay, mediasLikesTotal, mediaCardsCo
 };
 
 //LIKES
+ // Display total likes
+ const displayTotalLikes = () => {
+  const divLikes = document.createElement("div");
+  divLikes.classList.add("total_likes");
+  const mediasLikesTotalCardDOM = `<h2 tabindex="4" id="likes">${mediasLikesTotal}</h2>
+                                    <div class="heart filter_icons"><i class="fa fa-heart fa-lg" title="heart icon"></i></div>`;
+  divLikes.innerHTML = mediasLikesTotalCardDOM;
+  footer.prepend(divLikes);
+  };
+
 const addLike = (figure) => {
     figure.getElementsByTagName("h2")[1].textContent = Math.floor(figure.getElementsByTagName("h2")[1].textContent) + 1;
     mediasLikesTotal++;
@@ -260,16 +271,6 @@ const addLike = (figure) => {
     removeTotalLikes();
     updateTotalLikes();
   };
-
- // Display total likes
- const displayTotalLikes = () => {
-    const divLikes = document.createElement("div");
-    divLikes.classList.add("total_likes");
-    const mediasLikesTotalCardDOM = `<h2 tabindex="4" id="likes">${mediasLikesTotal}</h2>
-                                      <div class="heart filter_icons"><i class="fa fa-heart fa-lg" title="heart icon"></i></div>`;
-    divLikes.innerHTML = mediasLikesTotalCardDOM;
-    footer.prepend(divLikes);
-    };
 
   // Update total likes
   const removeTotalLikes = () => {

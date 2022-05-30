@@ -145,6 +145,7 @@ const mediasDOM = (mediasToDisplay) => {
     });
   });
 
+  //Écoute événements previous et next dans la lightbox
   document.querySelector(".lightbox__prev").addEventListener("click", previousLightbox);
   document.querySelector(".lightbox__next").addEventListener("click", nextLightbox);
   document.addEventListener("keyup", (e) => {

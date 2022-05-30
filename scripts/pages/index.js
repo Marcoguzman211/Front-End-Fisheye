@@ -6,8 +6,7 @@
             });
     };
 
-
-    function displayData(photographers) {
+    const displayData = (photographers) => {
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
@@ -17,7 +16,7 @@
         });
     };
 
-    async function init() {
+    const init = async () => {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
